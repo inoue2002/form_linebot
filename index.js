@@ -1,10 +1,8 @@
 "use strict";
-// モジュール呼び出し
 const crypto = require("crypto");
 const line = require("@line/bot-sdk");
 const axios = require("axios");
 
-// インスタンス生成
 const client = new line.Client({ channelAccessToken: process.env.ACCESSTOKEN });
 
 exports.handler = (event) => {
@@ -15,7 +13,7 @@ exports.handler = (event) => {
   const checkHeader = (event.headers || {})["X-Line-Signature"];
   const body = JSON.parse(event.body);
   const events = body.events;
-  console.log(events);
+  //console.log(events);
 
   // 署名検証が成功した場合
   if (signature === checkHeader) {
@@ -65,7 +63,7 @@ async function messageFunc(event) {
     case "回答する":
       message = {
         type: "flex",
-        altText: "Flex Message",
+        altText: "設問1",
         contents: {
           type: "bubble",
           direction: "ltr",
@@ -179,7 +177,7 @@ const postbackFunc = async function (event) {
   if (postbackData === "やり直す") {
     message = {
       type: "flex",
-      altText: "Flex Message",
+      altText: "設問1",
       contents: {
         type: "bubble",
         direction: "ltr",
@@ -327,13 +325,13 @@ const postbackFunc = async function (event) {
   q1Data = Number(q1Data); // 1
   q2Data = Number(q2Data); // 2
 
-  console.log("Q1Data", q1Data);
-  console.log("Q2Data", q2Data);
+  //console.log("Q1Data", q1Data);
+  //console.log("Q2Data", q2Data);
 
   if (q1Data > 0 && q2Data === 0) {
     message = {
       type: "flex",
-      altText: "Flex Message",
+      altText: "設問2",
       contents: {
         type: "bubble",
         direction: "ltr",
