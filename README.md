@@ -1,4 +1,4 @@
-# LINEbotでGformに回答するでもLINEBot
+# LINEbotでGformに回答するデモLINEBot
 
 
 
